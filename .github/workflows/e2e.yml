@@ -60,7 +60,7 @@ jobs:
     if: >-
       (github.event_name != 'pull_request'
       || !(github.event.pull_request.head.repo.fork || github.event.pull_request.user.login == 'dependabot[bot]'))
-      && (github.repository == 'deepseek-ai/deepseek-harness' || github.repository == 'deepseek-harness/deepseek-harness' || secrets.DEEPSEEK_API_KEY_EXTERNAL != '')
+      && (github.repository == 'deepseek-ai/deepseek-harness' || github.repository == 'deepseek-harness/deepseek-harness' || vars.DSH_ENABLE_EXTERNAL_E2E == 'true')
     # Bounded file parallelism (DSH_E2E_MAX_WORKERS), 120s/test, retry 2. 45m
     # still bounds retry storms against a slow API while the happy path fans out.
     timeout-minutes: 45
